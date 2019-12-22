@@ -1,20 +1,25 @@
-package respository
+package respositories
 
-import "github.com/kataras/iris/_examples/mvc/overview/datamodels"
+import (
+	"learn_Iris/datamodels"
+	"learn_Iris/datasource"
+)
+
+
 //业务层
 type MovieRespository interface {
 	GetMovieName() string
 }
 
-type MovieManager struct {
-
-}
+type MovieRespositoryManager struct {}
 
 func NewMovieManager() MovieRespository {
-	return &MovieManager{}
+	//数据库操作类
+	return &MovieRespositoryManager{}
 }
 
-func (m *MovieManager) GetMovieName() string {
-	movie := &datamodels.Movie{Name:"流星花园"}
+func (m *MovieRespositoryManager) GetMovieName() string {
+	movie := &datamodels.Movie{Name:datasource.Movies[1].Name}
+	//模拟数据库操作
 	return movie.Name
 }
